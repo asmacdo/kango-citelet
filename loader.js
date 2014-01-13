@@ -12,7 +12,6 @@ var $ = window.$.noConflict(true); // Required for Opera and IE
 var CITELET_JS_URL = 'http://162.243.115.205/citelet/static/js/citelet.min.js';
 
 $(document).ready(function () {
-    // Run Citelet
     main();
 });
 
@@ -21,13 +20,7 @@ function main() {
   kango.dispatchMessage('GetScript', msg);
   kango.addMessageListener('SetScript', function(event) {
     var script = document.createElement('script');
-    //var sayHello = alert("hi");
-    script.innerHTML=event.data.src; //sayHello);
+    script.innerHTML = event.data.src;
     document.body.appendChild(script);
   });
 }
-  
-//  var script = document.createElement('script');
-//  script.setAttribute('src', CITELET_JS_URL);
-//  document.body.appendChild(script);
-//console.log(tS);
