@@ -1,0 +1,14 @@
+{
+    "content_scripts": [
+        "loader.js"
+    ], 
+    "description": "Exports citations to the scinet database.", 
+    "creator": "Austin Macdonald", 
+    "background_scripts": [
+        "jquery-1.9.1.min.js",
+        "cache-control.js"
+    ], 
+    "homepage_url": "http://github.com/CenterForOpenScience/scinet-citelet/", 
+    "version": "0.9.0", 
+    "name": "Citelet"
+}
