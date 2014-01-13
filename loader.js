@@ -9,18 +9,19 @@
 
 var $ = window.$.noConflict(true); // Required for Opera and IE
 
-var CITELET_JS_URL = 'http://162.243.115.205/citelet/static/js/citelet.min.js';
-
+// When document is loaded send a message to cache-control to send cached 
+// Citelet javascript. Append script to page and execute
 $(document).ready(function () {
-    main();
-});
 
-function main() {
   var msg = {};
+  // To cache-control
   kango.dispatchMessage('GetScript', msg);
+
+  // From cache-control, payload contains bookmarklet code
   kango.addMessageListener('SetScript', function(event) {
+    // Attach code to page
     var script = document.createElement('script');
     script.innerHTML = event.data.src;
     document.body.appendChild(script);
   });
-}
+});
