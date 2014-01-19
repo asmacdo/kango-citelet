@@ -16,17 +16,17 @@ function ensureNewestVersion() {
     isNaN(kango.storage.getItem('citeletTimeStamp')) ||
     !kango.storage.getItem('citeletCache'))  {
 
-      console.log("Checking server");
+    console.log("Checking server for latest version of Citelet");
 
-      // Get a fresh file from CITELET_SRC and save to local storage
-      var request = kango.xhr.getXMLHttpRequest();
-      request.open('GET', CITELET_SRC, false);
-      request.send(null);
+    // Get a fresh file from CITELET_SRC and save to local storage
+    var request = kango.xhr.getXMLHttpRequest();
+    request.open('GET', CITELET_SRC, false);
+    request.send(null);
 
-      if (request.status == 200) {
-        kango.storage.setItem('citeletCache', request.responseText);
-        kango.storage.setItem('citeletTimeStamp', nowTime);
-      }
+    if (request.status == 200) {
+      kango.storage.setItem('citeletCache', request.responseText);
+      kango.storage.setItem('citeletTimeStamp', nowTime);
+    }
 
   } // Does not need a new file, no change needed.
 }
