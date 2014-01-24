@@ -7,9 +7,6 @@
 // @require cache-control.js
 // ==/UserScript==
 
-var THANKS_STYLE = "border:2px solid; border-radius:25px; position:fixed; right:0px; background-color:#08c; padding:5px; bottom:0px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;";
-var THANKS_FADEOUT = 1500;
-
 var $ = window.$.noConflict(true); // Required for Opera and IE
 
 // When document is loaded send a message to cache-control to send cached 
@@ -32,16 +29,25 @@ $(document).ready(function () {
     setTimeout(function() {
 
       // If publisher is recognized, create and show thank you div
-      if ($('#citeletPublisher').length) {
-        $('<div></div>')
-            .attr('id', 'citeletThanks')
-            .attr('style', THANKS_STYLE)
-            .text('Thank you for your contribution!')
-            .appendTo('body')
-            .delay(THANKS_FADEOUT)
-            .fadeOut(); 
-      }
-    }, 1000); // Wait to check whether publisher was found
+      var citePub = document.getElementById("citeletPublisher");
+      if (citePub.innerHTML == "Has Publisher") {
+        var citeletThanks = document.createElement("div");
+        citeletThanks.innerHTML = "Thank you for your contribution!";
+        citeletThanks.setAttribute("id", "citeletThanks");
+        citeletThanks.setAttribute("style", "border:2px solid; border-radius:25px; position:fixed; right:0px; background-color:#08c; padding:5px; bottom:0px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;");
 
-  }); // message listener
+        document.body.appendChild(citeletThanks);
+
+
+        // Hide thank you div
+        setTimeout(function() {
+            var hideThanks = document.createElement("script");
+            hideThanks.innerHTML = '$("#citeletThanks").fadeOut(700);'
+            document.body.appendChild(hideThanks);
+
+        }, 1500);
+      }
+    }, 1000);
+
+  });
 });

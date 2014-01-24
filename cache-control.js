@@ -11,6 +11,8 @@ function ensureNewestVersion() {
 
   // If files are not cached or cached file are more than a day old,
   // cache a fresh version from the server.
+
+  //if((nowTime  > cacheTime) || //For testing, use to get a new version of citelet from the server. Be sure to clear your browser cache or it may pull from there.
   if((nowTime - 86400000 > cacheTime) ||
     !kango.storage.getItem('citeletTimeStamp') ||
     isNaN(kango.storage.getItem('citeletTimeStamp')) ||
