@@ -1,13 +1,15 @@
-var StorageTest = {
+var citeletOptions = {
 
     init: function() {
         $('#storage-get').click(function(event) {
-            StorageTest.getAffiliation();
+            citeletOptions.getAffiliation();
         });
 
         $('#storage-set').click(function(event) {
-            StorageTest.setAffiliation();
+            citeletOptions.setAffiliation();
         });
+
+        citeletOptions.getAffiliation();
     },
 
     getAffiliation: function() {
@@ -27,6 +29,6 @@ KangoAPI.onReady(function() {
         KangoAPI.closeWindow()
     });
 
-    StorageTest.init();
+    citeletOptions.init();
 });
 
